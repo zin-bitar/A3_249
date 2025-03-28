@@ -8,12 +8,13 @@ public class Main {
     public static void main(String[] args) {
 
         ArrayList<Product> products = new ArrayList<Product>();
-        Scanner scanner = FileHandler.createInputScanner("TradeData.txt");
+        Scanner scanner = FileHandler.createInputScanner("src/TradeData.txt");
         while(scanner.hasNextLine()){
-            String name = scanner.next();
-            String country = scanner.next();
-            String category = scanner.next();
-            double price = scanner.nextDouble();
+            String[] data = scanner.nextLine().split(",");
+            String name = data[0];
+            String country = data[1];
+            String category = data[2];
+            double price = Double.parseDouble(data[3]);
             Product product = new Product(name, country, category, price);
             products.add(product);
         }
