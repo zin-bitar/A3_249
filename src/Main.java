@@ -76,6 +76,27 @@ public class Main {
             }
         }
 
+        Scanner requestScanner = FileHandler.createInputScanner("src/TradeRequests.txt");
+        while(requestScanner.hasNextLine()){
+            String[] data = requestScanner.nextLine().split(" ");
+            String requestID = data[0];
+            String originCountry = data[1];
+            String destinationCountry = data[2];
+            String productCategory = data[3];
+            double tradeValue = Double.parseDouble(data[4]);
+            double proposedTariff = Double.parseDouble(data[5]);
+            TariffList.TariffNode node = list1.find(originCountry, destinationCountry, productCategory);
+            if (node == null) {
+                System.out.println(requestID + " - Rejected.");
+                System.out.println("No matching tariff rule found.");
+                System.out.println();
+                
+            }
+        }
+
+
+
+
 
 
 

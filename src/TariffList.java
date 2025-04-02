@@ -125,7 +125,7 @@ public class TariffList implements TariffPolicy{
         return "";
     }
 
-    private class TariffNode{
+    public class TariffNode{
 
         private Tariff tariff;
         private TariffNode next;
