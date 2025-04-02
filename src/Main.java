@@ -89,16 +89,19 @@ public class Main {
                 if(status.equals("Accepted")){
                     System.out.println(requestID + " - Accepted." + "\n" +
                             "Proposed tariff meets or exceeds the minimum requirement.");
+                    System.out.println();
                 }
                 else if(status.equals("Rejected")){
                     System.out.println(requestID + " - Rejected." + "\n" +
                             "Proposed tariff" + proposedTariff + "% is more than 20% below the required minimum tariff " + minimumTariff + "%.");
+                    System.out.println();
                 }
                 else if(status.equals("Conditional")){
                     double surcharge = tradeValue*((minimumTariff - proposedTariff)/100);
                     System.out.println(requestID + " - Conditionally Accepted." + "\n" +
                             "Proposed tariff " + proposedTariff + " is within 20% of the required minimum tariff " + minimumTariff + "%." + "\n" +
                             "A surcharge of $" + surcharge + " is applied.");
+                    System.out.println();
                 }
 
             }
