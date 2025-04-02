@@ -62,6 +62,7 @@ public class Tariff {
         return new Tariff(this);
     }
 
+    @Override
     public String toString(){
         return "destination: " + destinationCountry + "origin: " + originCountry + "category: " + productCategory + "mininmum Tariff: " + minimumTariff;
     }

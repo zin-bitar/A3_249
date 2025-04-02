@@ -3,6 +3,9 @@ import java.util.NoSuchElementException;
 public class TariffList implements TariffPolicy{
 
     private TariffNode head;
+
+
+
     private int size;
 
     public TariffList(){
@@ -34,8 +37,14 @@ public class TariffList implements TariffPolicy{
     }
 
     public void insertAtIndex(Tariff tariff, int index){
+        try{
         if (index < 0 || index > size - 1)
-                throw new NoSuchElementException("No such element index");
+                throw new NoSuchElementException("No such element index");}
+        catch(IndexOutOfBoundsException e){
+        System.out.println("Index out of bounds");
+        System.exit(0);
+        }
+
         if(index == 0)
             addToStart(tariff);
         else{
@@ -49,8 +58,12 @@ public class TariffList implements TariffPolicy{
     }
 
     public void deleteFromIndex(int index){
-        if (index < 0 || index > size - 1)
-            throw new NoSuchElementException("No such element index");
+        try{
+            if (index < 0 || index > size - 1)
+                throw new NoSuchElementException("No such element index");}
+        catch(IndexOutOfBoundsException e){
+            System.out.println("Index out of bounds");
+            System.exit(0);}
         if(index == 0)
             deleteFromStart();
         else{
@@ -61,6 +74,7 @@ public class TariffList implements TariffPolicy{
         current.setNext(current.getNext().getNext());
         size--;}
     }
+
 
     public boolean deleteFromStart(){
         if(head != null){
@@ -86,7 +100,7 @@ public class TariffList implements TariffPolicy{
             iterations++;
             Tariff tariff = current.tariff;
             if(tariff.getOriginCountry().equalsIgnoreCase(origin) && tariff.getDestinationCountry().equalsIgnoreCase(destination) && tariff.getProductCategory().equalsIgnoreCase(category)){
-                System.out.println(iterations + "Iterations");
+                System.out.println(iterations + " iterations");
                 return current;}
             current = current.getNext();
         }
@@ -120,9 +134,25 @@ public class TariffList implements TariffPolicy{
         return true;
     }
 
+    public void outputList(){
+        TariffNode position = head;
+        while(position != null){
+            System.out.println(position.getTariff());
+            position = position.getNext();
+        }
+    }
+
     @Override
     public String evaluateTrade(double proposedTariff, double minimumTariff) {
-        return "";
+        String output = "";
+        if (0.8 * minimumTariff > proposedTariff) {
+            output = "Rejected";}
+        else if (minimumTariff <= proposedTariff) {
+            output = "Accepted";
+        } else if (0.8 * minimumTariff <= proposedTariff) {
+            output = "Conditional";
+        }
+        return output;
     }
 
     public class TariffNode{
