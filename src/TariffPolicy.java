@@ -1,2 +1,4 @@
-public class TariffPolicy {
+public interface TariffPolicy {
+
+String evaluateTrade(double proposedTariff, double minimumTariff);
 }

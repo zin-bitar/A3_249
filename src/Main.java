@@ -7,6 +7,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        TariffList list1 = new TariffList();
+        TariffList list2 = new TariffList();
+        Scanner tariffsScanner = FileHandler.createInputScanner("src/Tariffs.txt");
+
         ArrayList<Product> products = new ArrayList<Product>();
         Scanner scanner = FileHandler.createInputScanner("src/TradeData.txt");
         while(scanner.hasNextLine()){
