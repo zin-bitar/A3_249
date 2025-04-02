@@ -2,8 +2,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
 
@@ -11,6 +9,8 @@ public class Main {
         TariffList list2 = new TariffList();
         Scanner tariffsScanner = FileHandler.createInputScanner("src/Tariffs.txt");
 
+
+        //For the products (Part 1)
         ArrayList<Product> products = new ArrayList<Product>();
         Scanner scanner = FileHandler.createInputScanner("src/TradeData.txt");
         while(scanner.hasNextLine()){
@@ -59,6 +59,21 @@ public class Main {
         for(int i =0; i<products.size(); i++){
             Product product = products.get(i);
             writer.print(product.getName() + "," + product.getCountry() + "," + product.getCategory() + "," + product.getPrice());
+        }
+        scanner.close();
+        writer.close();
+
+        //for part 2:
+        while(tariffsScanner.hasNextLine()){
+            String[] data = tariffsScanner.nextLine().split(" ");
+            String destinationCountry = data[0];
+            String originCountry = data[1];
+            String productCategory = data[2];
+            double minimumTariff = Double.parseDouble(data[3]);
+            Tariff tariff = new Tariff(destinationCountry, originCountry, productCategory, minimumTariff);
+            if(!(list1.contains(tariff))){
+            list1.addToStart(tariff);
+            }
         }
 
 
