@@ -11,19 +11,25 @@ public class TariffList implements TariffPolicy{
     }
 
     public TariffList(TariffList copy) {
+        if(copy.head == null){
+            this.head = null;
+            this.size = 0;
+            return;
+        }
         this.head = new TariffNode(copy.head.tariff.clone(), null);
         TariffNode current = head;
         TariffNode other = copy.head.next;
         while(other != null){
             TariffNode newNode = new TariffNode(other.tariff.clone(), null);
             current.next = newNode;
-            current = newNode.next;
+            current = newNode;
             other = other.next;
         }
         this.size = copy.size;
     }
 
     public void addToStart(Tariff tariff){
+        this.size++;
         head = new TariffNode(tariff, head);
     }
 
@@ -32,24 +38,28 @@ public class TariffList implements TariffPolicy{
                 throw new NoSuchElementException("No such element index");
         if(index == 0)
             addToStart(tariff);
+        else{
         TariffNode current = head;
         for (int i = 0; i < index-1; i++) {
             current = current.getNext();
         }
-        TariffNode newNode = new TariffNode(tariff, current);
+        TariffNode newNode = new TariffNode(tariff, current.getNext());
         current.setNext(newNode);
-        size++;
+        size++;}
     }
 
     public void deleteFromIndex(int index){
         if (index < 0 || index > size - 1)
             throw new NoSuchElementException("No such element index");
+        if(index == 0)
+            deleteFromStart();
+        else{
         TariffNode current = head;
         for (int i = 0; i < index-1; i++) {
             current = current.getNext();
         }
         current.setNext(current.getNext().getNext());
-        size--;
+        size--;}
     }
 
     public boolean deleteFromStart(){
@@ -63,7 +73,7 @@ public class TariffList implements TariffPolicy{
         if (index < 0 || index > size - 1)
             return;
         TariffNode current = head;
-        for (int i = 0; i < index-1; i++) {
+        for (int i = 0; i < index; i++) {
             current = current.getNext();
         }
         current.tariff = tariff.clone();
@@ -94,6 +104,7 @@ public class TariffList implements TariffPolicy{
         }
         return false;
     }
+
 
     public boolean equals(TariffList o){
         if(this == o) return true;
@@ -133,17 +144,14 @@ public class TariffList implements TariffPolicy{
             this.next = copy.getNext();
         }
         public TariffNode clone(){
-            TariffNode copy = new TariffNode(this);
-            this.tariff = copy.getTariff();
-            this.next = copy.getNext();
-            return copy;
+            return new TariffNode(this.tariff.clone(), this.next);
         }
 
         public boolean equals(Object o) {
             if(this == o) return true;
             if(o == null || this.getClass() != o.getClass()) return false;
             TariffNode other = (TariffNode) o;
-            return this.tariff == other.tariff && this.next == other.next;
+            return this.tariff.equals(other.tariff) && this.next.equals(other.next);
         }
 
         public Tariff getTariff() {

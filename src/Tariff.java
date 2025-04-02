@@ -59,12 +59,7 @@ public class Tariff {
     }
 
     public Tariff clone(){
-        Tariff copy = new Tariff(this);
-        this.destinationCountry = copy.getDestinationCountry();
-        this.originCountry = copy.getOriginCountry();
-        this.productCategory = copy.getProductCategory();
-        this.minimumTariff = copy.getMinimumTariff();
-        return copy;
+        return new Tariff(this);
     }
 
     public String toString(){
@@ -74,7 +69,7 @@ public class Tariff {
         if(this == o) return true;
         if(o == null || getClass() != o.getClass()) return false;
         Tariff tariff = (Tariff) o;
-        return this.destinationCountry.equals(tariff.destinationCountry) && this.originCountry.equals(tariff.originCountry) && this.productCategory.equals(tariff.productCategory) && this.minimumTariff == tariff.minimumTariff;
+        return this.destinationCountry.equals(tariff.destinationCountry) && this.originCountry.equals(tariff.originCountry) && this.productCategory.equals(tariff.productCategory) && Double.compare(this.minimumTariff, tariff.minimumTariff) == 0;
     }
 
 }
