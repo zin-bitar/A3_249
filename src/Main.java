@@ -71,7 +71,7 @@ public class Main {
             String productCategory = data[2];
             double minimumTariff = Double.parseDouble(data[3]);
             Tariff tariff = new Tariff(destinationCountry, originCountry, productCategory, minimumTariff);
-            if(!(list1.contains(tariff))){
+            if(!(list1.contains(tariff.getOriginCountry(), tariff.getOriginCountry(), tariff.getProductCategory()))){
             list1.addToStart(tariff);
             }
         }
