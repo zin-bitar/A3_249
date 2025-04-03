@@ -64,7 +64,7 @@ public class Tariff {
 
     @Override
     public String toString(){
-        return "destination: " + destinationCountry + "origin: " + originCountry + "category: " + productCategory + "mininmum Tariff: " + minimumTariff;
+        return "destination: " + destinationCountry + " origin: " + originCountry + " category: " + productCategory + " mininmum Tariff: " + minimumTariff;
     }
     public boolean equals(Object o){
         if(this == o) return true;

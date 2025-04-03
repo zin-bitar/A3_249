@@ -108,10 +108,35 @@ public class Main {
         }
 
         requestScanner.close();
+        System.out.println("Testing methods: ");
+        System.out.println("List 1:");
         list1.outputList();
+        System.out.println();
         list2 = new TariffList(list1);
+        System.out.println("List 2:");
         list2.outputList();
+        System.out.println();
         Tariff test = new Tariff("Syria", "Lebanon", "Water Bottle", 28);
+        System.out.println("Inserting tariff into index 1:");
         list2.insertAtIndex(test, 1);
-            System.out.println(list2);
+        list2.outputList();
+        System.out.println();
+
+        System.out.println("Deleting index 2 tariff:");
+        list2.deleteFromIndex(2);
+        list2.outputList();
+        System.out.println();
+
+        System.out.println("Deleting first tariff:");
+        list2.deleteFromStart();
+        list2.outputList();
+        System.out.println();
+
+        System.out.println("Replacing at index 0:");
+        list2.replaceAtIndex(test,0);
+        list2.outputList();
+        System.out.println();
+        System.out.println("Equals method (testing if list1 is equal to list2):");
+        System.out.println(list1.equals(list2));
+
     }}

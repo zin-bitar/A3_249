@@ -137,7 +137,7 @@ public class TariffList implements TariffPolicy{
     public void outputList(){
         TariffNode position = head;
         while(position != null){
-            System.out.println(position.getTariff());
+            System.out.println(position.getTariff().toString());
             position = position.getNext();
         }
     }
