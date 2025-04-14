@@ -1,3 +1,8 @@
+//-----------------------------
+//Assignment 3
+//Written by: Zin Bitar 40305895 && Lasmar Khalifa 40321544
+//-----------------------------
+
 import java.util.NoSuchElementException;
 
 public class TariffList implements TariffPolicy{

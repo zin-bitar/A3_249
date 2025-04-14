@@ -1,3 +1,16 @@
+//-----------------------------
+//Assignment 3
+//Written by: Zin Bitar 40305895 && Lasmar Khalifa 40321544
+//-----------------------------
+/**
+ * Program description: We are tasked with making a program that will calculate tariffs
+ * on trade requests between different countries, depending on the countries and category of items.
+ * It will also, depending on some rules we have been given, decide which trade requests are accepted,
+ * which ones are rejected and which ones are accepted conditionally, with a surcharge.
+ * Our program automatically takes inputs and gives outputs on the text files.
+ */
+
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -117,6 +130,7 @@ public class Main {
         list2.outputList();
         System.out.println();
         Tariff test = new Tariff("Syria", "Lebanon", "Water Bottle", 28);
+        Tariff test2 = new Tariff("Japan", "Canada", "Steel", 35);
         System.out.println("Inserting tariff into index 1:");
         list2.insertAtIndex(test, 1);
         list2.outputList();
@@ -133,7 +147,7 @@ public class Main {
         System.out.println();
 
         System.out.println("Replacing at index 0:");
-        list2.replaceAtIndex(test,0);
+        list2.replaceAtIndex(test2,0);
         list2.outputList();
         System.out.println();
         System.out.println("Equals method (testing if list1 is equal to list2):");

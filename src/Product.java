@@ -1,3 +1,8 @@
+//-----------------------------
+//Assignment 3
+//Written by: Zin Bitar 40305895 && Lasmar Khalifa 40321544
+//-----------------------------
+
 public class Product {
     private String name;
     private String country;

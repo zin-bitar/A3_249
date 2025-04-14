@@ -1,5 +1,9 @@
-public class Tariff {
+//-----------------------------
+//Assignment 3
+//Written by: Zin Bitar 40305895 && Lasmar Khalifa 40321544
+//-----------------------------
 
+    public class Tariff {
     private String destinationCountry;
     private String originCountry;
     private String productCategory;
